@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!-- namespace ：该mapper映射文件的唯一标识，通过namespace定位出该文件 -->
+<mapper namespace="org.hyf.entity.studentMapper">
+	<!-- 后续通过 namespace.id 唯一定位出该sql -->
+	<!--parameterType:输入参数的类型 
+		resultType:查询返回结果值的类型，返回类型 -->
+		
+	<!-- 通过stuNo查询学生 -->
+	<select id="selectStudentByStuno" parameterType="int" resultType="org.hyf.entity.Student">
+		select * from student where stuNo = #{stuNo}
+	</select>
+	
+	<!-- 增加 -->
+	<!-- mybatis在语法上只允许有一个输入值,只允许有一个输出值 -->
+	<insert id="addStudent" parameterType="org.hyf.entity.Student">
+		insert into student(stuNo,stuName,stuAge,graName) values(#{stuNo},#{stuName},#{stuAge},#{graName})
+	</insert>
+	
+	<!-- 删除 -->
+	<delete id="deleteStudentByStuno" parameterType="int">
+		delete from student where stuno = #{stuNo}
+	</delete>
+	
+	<!-- 修改 -->
+	<update id="updateStudentByStuno" parameterType="org.hyf.entity.Student">
+		update student set stuName = #{stuName},stuAge = #{stuAge},graName = #{graName} where stuNo = #{stuNo}
+	</update>
+	
+	<!-- 查询全部学生 -->
+	<select id="queryAllStudent" resultType="org.hyf.entity.Student">
+		select * from student
+	</select>
+	
+</mapper>

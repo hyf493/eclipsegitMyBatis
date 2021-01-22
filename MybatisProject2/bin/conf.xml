@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 通过environments的default的值和environment的id值来指定mybatis运行时的数据库环境 -->
+	<environments default="development">
+	
+		<!-- 开发环境信息 -->
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<!-- 配置数据库信息 -->
+				<property name="driver" value="oracle.jdbc.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:ORCL" />
+				<property name="username" value="scott" />
+				<property name="password" value="orcl" />
+			</dataSource>
+		</environment>
+		
+		<!-- 测试环境信息 -->
+		<environment id="test">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<!-- 配置数据库信息 -->
+				<property name="driver" value="oracle.jdbc.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:ORCL" />
+				<property name="username" value="scott" />
+				<property name="password" value="orcl" />
+			</dataSource>
+		</environment>
+		
+	</environments>
+	<mappers>
+		<!-- 加载映射文件 -->
+		<mapper resource="org/hyf/entity/studentMapper.xml" />
+	</mappers>
+</configuration>
